@@ -1,14 +1,14 @@
 # ============================================================================
-# 			Xbox Live Cheater Patches by tch1 updated to 16756
-# 			This will continously be updated with new 'cheats'
-#			Contemplating releasing live research...
+# 			A few X360 patches for live based things
+#			by tch1. Use for whatever you like, but
+#			please give credit where due!
 # ============================================================================
 
     .globl _start
 _start:
 
 # ----------------------------------------------------------------------------
-#						SECTION: Hooked Functions
+#						SECTION: Patched Functions
 # ----------------------------------------------------------------------------
 
 .set XContentGetLicenseMask, 0x816EEBA8
@@ -34,11 +34,11 @@ _start:
 9:
 
 # ----------------------------------------------------------------------------
-#						SECTION: Hooked functions
+#						SECTION: Patched functions
 # ----------------------------------------------------------------------------
 
 # ============================================================================
-# Patches all arcade games to full licensed game at runtime
+# Patches all arcade games to full licensed game
 # ============================================================================
 .long XContentGetLicenseMask
 .long (9f-0f)/4
@@ -76,7 +76,8 @@ _start:
 	mr %r3, %r4 # copy our gamertag buffer to r3
 	lis %r11, GamertagStr@h
 	addi %r4, %r11, GamertagStr@l
-	li %r5, 4 # length of our gamertag
+	li %r5, 5 # length of our gamertag + '\0'
+	li %r11, 0 # need to clear r11 here
 	lis %r11, memcpy@h
 	addi %r11, %r11, memcpy@l
 	mtcr %r11
