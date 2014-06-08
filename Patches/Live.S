@@ -1,5 +1,7 @@
 # ============================================================================
 # 			Xbox Live Cheater Patches by tch1 updated to 16756
+# 			This will continously be updated with new 'cheats'
+#			Contemplating releasing live research...
 # ============================================================================
 
     .globl _start
